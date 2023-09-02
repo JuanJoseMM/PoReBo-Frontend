@@ -1,0 +1,111 @@
+.bodyLogin {
+    background-color: #273c54;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.adaptive-image-one {
+    width: 242px;
+    height: 282px;
+    max-height: 400px;
+    min-height: 200px;
+    flex-shrink: 1;
+    background-size: cover;
+    background-position: center;  
+    background-image: url('../../../assets/images-background/ministeriopublicofondo.png');
+}
+.adaptive-image-two {
+    width: 242px;
+    height: 282px;
+    max-height: 400px;
+    min-height: 200px;
+    flex-shrink: 1;
+    background-size: cover;
+    background-position: center;  
+    background-image: url('../../../assets/images-background/logopoliciapnp.png');
+}
+.card {
+    width: 25%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #04286C;
+    border: 1px solid transparent;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 20px; 
+    border-radius: 25px;
+}
+
+.card input, .card button {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+.titleOne{
+    font-family: 'roboto-regular';
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+}
+.line {
+    width: 100%; 
+    height: 8px;
+    background-color: #c9dbfd ;
+    margin: 15px 0; 
+    border-radius: 10px;
+}
+
+
+
+.inputLogin {
+    width: 80%;
+    height: 25px;
+    border-radius: 12px;
+    border: 5px solid white;
+    background-color: transparent;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    padding: 12px;
+}
+
+
+.inputLogin {
+    outline: none; 
+    border-color: white;
+}
+
+.inputLogin::placeholder{
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+.btnLogin{
+    width: 40%;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    height: 50px;
+}
+
+.lblLogin{
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: white;
+}
