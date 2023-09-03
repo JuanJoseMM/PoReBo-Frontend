@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./lateral-bar.component.css']
 })
 export class LateralBarComponent {
-
+  isCollapsed = false;
+  toggleCollapse() {
+    console.log(this.isCollapsed)
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

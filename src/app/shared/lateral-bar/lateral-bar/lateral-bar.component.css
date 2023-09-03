@@ -1,0 +1,60 @@
+.lateral-bar {
+    position: fixed;
+    /* Hacemos que sea fijo para que cubra todo el alto y siempre esté visible */
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    /* Esto hace que tenga el alto de la ventana del viewport */
+    background-color: #04286C;
+    border-left: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+    /* Un valor alto para asegurarse de que esté encima de otros contenidos */
+    transition: transform 0.3s ease;
+    box-shadow: 0px 0px 18px 5px black;}
+
+.lateral-bar.collapsed {
+    transform: translateX(-150px);
+    /* Desplazamos el lateral-bar 400px hacia la derecha (que es su ancho), para sacarlo de la vista */
+}
+
+.close-button {
+    align-self: flex-end;
+    margin-bottom: 25%;
+    background-image: url('../../../../assets/icons/menu-hb.png');
+    width: 37px;
+    height: 36px;    
+    background-size: cover;
+    cursor: pointer;
+    border: 0;
+}
+.lateralbar-title{
+    font-family:  "Roboto", sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 50%;
+}
+.bottom-button-container {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btnMenu{
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    align-items: center;
+    margin-bottom: 25%;
+    font-size: 15px;
+    font-weight: bold;
+
+}
