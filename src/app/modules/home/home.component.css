@@ -1,36 +1,9 @@
-.home-container {
-    display: flex;
-  }
-  
-  .main-panel {
-    flex: 3;
-    border: 1px solid black; 
-    height: 500px;
-  }
-  
-  .side-panels {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-  }
-  
-  .upper-side-panel,
-  .lower-side-panel {
-    flex: 1;
-    border: 1px solid black;
-  }
-  
-  .lateral-bar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #f3f3f3;
-    border-left: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
+
+.container {
+  display: flex;
+  align-items: center;
+  background-color: #273c54;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+}

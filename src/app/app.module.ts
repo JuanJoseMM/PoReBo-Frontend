@@ -9,6 +9,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { ListDocumentsComponent } from './shared/list-documents/list-documents.component';
 import { AddDocumentsComponent } from './shared/add-documents/add-documents.component';
 import { RegisterDocComponent } from './modules/register-doc/register-doc.component';
+import { AddDenunciaComponent } from './shared/add-denuncia/add-denuncia.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterDocComponent } from './modules/register-doc/register-doc.compon
     HomeComponent,
     ListDocumentsComponent,
     AddDocumentsComponent,
-    RegisterDocComponent
+    RegisterDocComponent,
+    AddDenunciaComponent
   ],
   imports: [
     BrowserModule,
