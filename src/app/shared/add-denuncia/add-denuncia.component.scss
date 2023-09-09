@@ -1,12 +1,20 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* O la altura que desees para el contenedor */
+  }
 .card {
     width: 100%;
-    height: 100%;
+    height: 90%;
     padding: 1em;
     //border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     background-color: #C9DBFD;
+    font-family: 'roboto-regular';
 
     form {
         display: flex;
@@ -17,6 +25,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1em;
+            margin-top: 3px;
 
             input,
             select,
@@ -37,15 +46,40 @@
 }
 .inputStyle{
     background-color: #fafbff;
+    color: #04286C;
+    font-weight: 900;
     border-color: transparent;
-    border-radius: 15px;
-    height: 25px;
-    font-family: 'roboto-regular';
-    font-weight: 1.5em;
+    border-radius: 5px;
+    height: 20px;
     padding-left: 15px;
+    font-family: "roboto-regular";
+    font-size: 15px;
 }
 input:focus {
-    outline: none;
     border-color: #04286C;
-    box-shadow: 0 0 0 1px #04286C;
+  }
+input:disabled{
+    background-color: #C3C4C7;
+    color: #04286C;
+    font-weight: 900;
+}
+  .contentmain{
+    background-color: #04286C;
+  }
+
+  .labelForm{
+    color: #04286C;
+    font-family: 'roboto-regular';
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .side-button {
+    margin: 5px;
   }

@@ -1,52 +1,236 @@
+<div class="container">
+
 <div class="card">
-    <form>
-      <div class="row">
-        <input type="text" placeholder="DNI" class="inputStyle">
-        <button>Botón</button>
+  <form *ngIf="this.cardSelected ==1">
+    <h3>Recepción de Denuncia Verbal</h3>
+
+    <div class="row">
+      <label class="labelForm">Dependencia policial</label>
+      <input type="text" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Locación</label>
+      <div class="sub-row">
+        <label class="labelForm">Distrito</label>
+        <input type="text" disabled class="inputStyle">
+        <label class="labelForm">Provincia</label>
+        <input type="text" disabled class="inputStyle">
+        <label class="labelForm">Departamento</label>
+        <input type="text" disabled class="inputStyle">
       </div>
-      <div class="row">
-        <input type="text" placeholder="Nombre" disabled>
-        <input type="text" placeholder="Apellidos" disabled>
-        <input type="text" placeholder="Dirección" disabled>
-      </div>
-      <div class="row">
-        <input type="text" placeholder="País" disabled>
-        <input type="text" placeholder="Departamento" disabled>
-        <input type="text" placeholder="Distrito" disabled>
-      </div>
-      <div class="row">
-        <input type="text" placeholder="DNI Denunciado">
-        <button>Botón</button>
-      </div>
-      <div class="row">
-        <input type="text" placeholder="Nombre Denunciado" disabled>
-        <input type="text" placeholder="Apellidos Denunciado" disabled>
-        <input type="text" placeholder="Dirección Denunciado" disabled>
-      </div>
-      <div class="row">
-        <label>Hecho</label>
-        <textarea></textarea>
-      </div>
-      <div class="row">
-        <input type="text" placeholder="Policía" disabled>
-        <input type="text" placeholder="Cargo" disabled>
-        <input type="text" placeholder="Número CIP" disabled>
-      </div>
-      <div class="row">
-        <input type="text" placeholder="Nombre Comisaría" disabled>
-        <input type="text" placeholder="Dirección Comisaría" disabled>
-      </div>
-      <div class="row">
-        <label>Tipo de Denuncia</label>
-        <select>
-          <option>ejemplo1</option>
-          <option>ejemplo2</option>
-          <option>ejemplo3</option>
-        </select>
-      </div>
-      <div class="row">
-        <button type="submit" class="center-button">Registrar Denuncia</button>
-      </div>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Hora registros</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Personal a cargo</label>
+      <input type="text" disabled class="inputStyle">
+    </div>
+    <h3>Denunciante</h3>
+
+    <div class="row">
+      <label class="labelForm">Tipo de Documento</label>
+      <select>
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+      </select>
+      <label class="labelForm">Número</label>
+      <input type="number" pattern="\d*" class="inputStyle">
+      <button>Buscar</button>
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Domicilio</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Descripción de Vivienda</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Referencia</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Domicilio de Transito</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Domicilio Procesal</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Motivo de Localidad</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Edad</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Sexo</label>
+      <input type="text" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Teléfono particular</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Teléfono de Referencia</label>
+      <input type="text" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Email</label>
+      <input type="email" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Grado de Instrucción</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Nacionalidad</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Fecha de Nacimiento</label>
+      <input type="date" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Nombre Cónyuge</label>
+      <input type="text" class="inputStyle">
+      <label class="labelForm">Lengua Materna</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Ocupación</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Lugar de Labores</label>
+      <input type="text" class="inputStyle">
+      <label class="labelForm">Horario</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Relación con la víctima o agraviado</label>
+      <input type="text" class="inputStyle">
+    </div>
+  </form>
+  <form *ngIf="this.cardSelected ==2">
+   
+    <h3>Denuncianto</h3>
+
+    <div class="row">
+      <label class="labelForm">Tipo de Documento</label>
+      <select>
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+      </select>
+      <label class="labelForm">Número</label>
+      <input type="number" pattern="\d*" class="inputStyle">
+      <button>Buscar</button>
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Domicilio</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Descripción de Vivienda</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Referencia</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Domicilio de Transito</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Domicilio Procesal</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Motivo de Localidad</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Edad</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Sexo</label>
+      <input type="text" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Teléfono particular</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Teléfono de Referencia</label>
+      <input type="text" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Email</label>
+      <input type="email" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Grado de Instrucción</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Nacionalidad</label>
+      <input type="text" disabled class="inputStyle">
+      <label class="labelForm">Fecha de Nacimiento</label>
+      <input type="date" disabled class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Nombre Cónyuge</label>
+      <input type="text" class="inputStyle">
+      <label class="labelForm">Lengua Materna</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Ocupación</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Lugar de Labores</label>
+      <input type="text" class="inputStyle">
+      <label class="labelForm">Horario</label>
+      <input type="text" class="inputStyle">
+    </div>
+
+    <div class="row">
+      <label class="labelForm">Relación con la víctima o agraviado</label>
+      <input type="text" class="inputStyle">
+    </div>
+  </form>
+</div>
+<div class="button-container">
+  <button class="side-button" (click)="nextCard()">Siguiente</button>
+  <button class="side-button" (click)="previousCard()">Atras</button>
+  <button class="side-button">Editar</button>
+</div>
+</div>
