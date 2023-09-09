@@ -80,6 +80,79 @@ input:disabled{
     justify-content: center;
   }
   
-  .side-button {
-    margin: 5px;
+
+  /* CSS */
+.button-37 {
+  background-color: #2F5E6A;
+  border: 1px solid #2F5E6A;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "roboto-regular";
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 10px;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
   }
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: #04286C;
+  background-image: none;
+  cursor: pointer;
+  height: 24px;
+  border-radius: 5px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+button {
+  background-color: #04286C;
+  border: 1px solid #04286C;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "roboto-regular";
+  font-size: 16px;
+  font-weight: 400;
+  outline: 0;
+  padding: 5px 17px;
+  text-align: center;
+  transition: transform 150ms, box-shadow 150ms;
+  touch-action: manipulation;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
