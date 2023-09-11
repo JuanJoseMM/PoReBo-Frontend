@@ -15,12 +15,18 @@
     overflow-y: auto;
     background-color: #C9DBFD;
     font-family: 'roboto-regular';
-    margin-left: 10%;
-
+    margin-left: 5%;
+    h1,h2,h3{
+      font-family: 'roboto-regular';
+    }
     form {
         display: flex;
         flex-direction: column;
-
+        .row-exception{
+          width: 500px;
+          margin-top: 10px;
+          padding: 0px;
+        }
         .row {
             display: flex;
             justify-content: space-between;
@@ -158,4 +164,19 @@ button {
 button:hover {
   box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
+}
+.custom-list {
+  padding-left: 20px; 
+  list-style-type: none;
+  list-style-type: disc; 
+  li{
+    margin-top: 10px;
+  }
+  p{
+    margin-top: 10px;
+  }
+}
+.custom-list li::marker {
+  color: #04286C; /* Cambia el color del marcador */
+  font-size: 1em; /* Cambia el tamaño del marcador */
 }

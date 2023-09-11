@@ -12,14 +12,12 @@
 
       <div class="row">
         <label class="labelForm">Locación</label>
-        <div class="sub-row">
-          <label class="labelForm">Distrito</label>
-          <input type="text" disabled class="inputStyle">
-          <label class="labelForm">Provincia</label>
-          <input type="text" disabled class="inputStyle">
-          <label class="labelForm">Departamento</label>
-          <input type="text" disabled class="inputStyle">
-        </div>
+        <label class="labelForm">Distrito</label>
+        <input type="text" disabled class="inputStyle">
+        <label class="labelForm">Provincia</label>
+        <input type="text" disabled class="inputStyle">
+        <label class="labelForm">Departamento</label>
+        <input type="text" disabled class="inputStyle">
       </div>
 
       <div class="row">
@@ -241,38 +239,41 @@
       <div class="row">
         <input type="text" class="inputStyle">
       </div>
-
-      <h3>Lectura de los derechos y deberes de la victima</h3>
-      <div class="row">
-        <p>El Personal policial, le informó a la víctima que le asisten los siguientes derechos:</p>
+      <div class="row-exception">
+        <div class="col-12">
+          <p>El Personal policial, le informó a la víctima que le asisten los siguientes derechos:</p>
+          <ul class="custom-list">
+            <li>A recibir un trato digno y respetuoso por parte de las autoridades competentes.</li>
+            <li>A la protección de su integridad, incluyendo la de su familia.</li>                                    
+            <li>A que se preserve su identidad en los procesos por delitos contra la libertad sexual.</li>
+            <li>A ser informado/a, a su solicitud, de los resultados de la actuación en que haya intervenido, así como del resultado del procedimiento, aún cuando no haya intervenido.</li>
+            <li>A ser escuchado/a antes de cada decisión que implique la extinción o suspensión de la acción penal, siempre que lo soliciten.</li>
+            <li>A impugnar el sobreseimiento y la sentencia absolutoria, así como a impugnar la disposición de no formalización de investigación preparatoria.</li>
+            <li>A ser acompañado/a por una persona de su confianza durante las actuaciones en las que intervenga, si el/la agraviado/a fuera niño, niña, adolescente e incapaz.</li>
+            <li>A reclamar la reparación y, en su caso, los daños y perjuicios, si se constituye en actor civil.</li>          
+          </ul>
+        </div>
       </div>
-      <div class="row">
-        <li> A recibir un trato digno y respetuoso por parte de las autoridades competentes.</li>
+      <div class="row-exception">
+        <div class="col-12">
+          <p>Así como, tiene los siguientes deberes:</p>
+          <ul class="custom-list">
+            <li>Acudir a las diligencias a las que sea citado.</li>
+            <li>Declarar como testigo en las actuaciones de investigación y en juicio oral.</li>                                    
+            <li>Colaborar con el esclarecimiento del hecho delictivo y la intervención de los responsables.</li>                                                            
+          </ul>
+          <p>Debiendo decir la verdad, bajo apercibimiento de ser denunciado/a por el delito de denuncia calumniosa.</p>
+        </div>
       </div>
+    </form>
+    <form *ngIf="this.cardSelected ==4">
+      <h3>Hora (24HRS), día, mes, año y lugar donde ocurrión el hecho que se denuncia</h3>
       <div class="row">
-        <li> A la protección de su integridad, incluyendo la de su familia.</li>
+        <input type="text" class="inputStyle">
       </div>
+      <h3>Descripción del hecho</h3>
       <div class="row">
-        <li> A que se preserve su identidad en los procesos por delitos contra la libertad sexual.</li>
-      </div>
-      <div class="row">
-        <li> A ser informado/a, a su solicitud, de los resultados de la actuación en que haya intervenido, así como<br>
-          del resultado del procedimiento, aún cuando no haya intervenido.</li>
-      </div>
-      <div class="row">
-        <li>A ser escuchado/a antes de cada decisión que implique la extinción o suspensión de la acción penal,
-          siempre que lo soliciten.</li>
-      </div>
-      <div class="row">
-        <li> A impugnar el sobreseimiento y la sentencia absolutoria, así como a impugnar la disposición de no
-          formalización de investigación preparatoria.</li>
-      </div>
-      <div class="row">
-        <li>A ser acompañado/a por una persona de su confianza durante las actuaciones en las que intervenga,
-          si el/la agraviado/a fuera niño, niña, adolescente e incapaz.</li>
-      </div>
-      <div class="row">
-        <li>A reclamar la reparación y, en su caso, los daños y perjuicios, si se constituye en actor civil.</li>
+        <input type="text" class="inputStyle">
       </div>
     </form>
   </div>
