@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AddDenunciaComponent {
 
-  public cardSelected=4
+  public cardSelected=1
 
   nextCard(){
     this.cardSelected=this.cardSelected+1
