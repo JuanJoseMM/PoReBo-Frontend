@@ -17,20 +17,7 @@
         <label class="labelForm">Distrito :</label>
         <input type="text" disabled class="inputStyle">
       </div>
-      <div class="row">
-        <label class="labelForm">Dirección :</label>
-        <input type="text" disabled class="inputStyle">
-        <label class="labelForm">Telefono :</label>
-        <input type="text" disabled class="inputStyle">
-      </div>
-      <div class="row">
-        <label class="labelForm">Locación :</label>
-        <input type="text" disabled class="inputStyle">
-      </div>
-      <div class="row">
-        <label class="labelForm">Jurisdicción :</label>
-        <input type="text" disabled class="inputStyle">
-      </div>
+
       <div class="row">
         <label class="labelForm">Hora Registro :</label>
         <input type="text" disabled class="inputStyle">
@@ -212,6 +199,27 @@
       </div>
       <h3>Descripción del hecho</h3>
       <div class="row">
+        <textarea class="txtAreaStyle" name="" id="" cols="30" rows="10"></textarea> 
+      </div>
+    </form>
+    <form *ngIf="this.cardSelected ==5">
+      <div class="row">
+        <label class="labelForm">La denuncia fue reportada anteriormente : </label>
+        <label class="custom-checkbox">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <h3>Evidencias del hecho</h3>
+      <div class="row">
+        <textarea class="txtAreaStyle" name="" id="" cols="80" rows="10"></textarea> 
+      </div>
+      <h3>Informacion adicional al hecho</h3>
+      <div class="row">
+        <textarea class="txtAreaStyle" name="" id="" cols="80" rows="10"></textarea> 
+      </div>
+      <div class="row">
+        <label class="labelForm">Croquis (URL)</label>
         <input type="text" class="inputStyle">
       </div>
     </form>
