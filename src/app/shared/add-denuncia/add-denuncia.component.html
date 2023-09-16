@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="card">
-    <form *ngIf="this.cardSelected ==1">
+    <form *ngIf="this.cardSelected ==1" [formGroup]="personaForm">
       <h3>Recepción de Denuncia Verbal</h3>
       <div class="row">
         <label class="labelForm">Dependencia policial :</label>
@@ -35,13 +35,13 @@
         </select>
         <label class="labelForm">Número</label>
         <input type="number" pattern="\d*" class="inputStyle">
-        <button>Buscar</button>
+        <button type="button" (click)="buscarByID($event)">Buscar</button>
       </div>
       <div class="row">
         <label class="labelForm">Nombres</label>
-        <input type="text" disabled class="inputStyle">
+        <input type="text"  class="inputStyle" formControlName="firstName" [attr.disabled]="isDisabled ? true : null">
         <label class="labelForm">Apellidos</label>
-        <input type="text" disabled class="inputStyle">
+        <input type="text"  class="inputStyle" formControlName="lastName" [attr.disabled]="isDisabled ? true : null">
       </div>
       <div class="row">
         <label class="labelForm">Domicilio</label>
@@ -65,23 +65,23 @@
         <label class="labelForm">Fecha Nacimiento</label>
         <input type="text" disabled class="inputStyle">
         <label class="labelForm">Sexo</label>
-        <input type="text" disabled class="inputStyle">
+        <input type="text" class="inputStyle" formControlName="gender" [attr.disabled]="isDisabled ? true : null">
       </div>
 
       <div class="row">
         <label class="labelForm">Teléfono particular</label>
-        <input type="text" disabled class="inputStyle">
+        <input type="text" class="inputStyle" formControlName="phone" [attr.disabled]="isDisabled ? true : null">
         <label class="labelForm">Email</label>
-        <input type="email" disabled class="inputStyle">
+        <input type="email" class="inputStyle" formControlName="email" [attr.disabled]="true">
       </div>
 
       <div class="row">
         <label class="labelForm">Estado Civil</label>
-        <input type="text" class="inputStyle">
+        <input type="text" class="inputStyle" formControlName="maritalStatus" [disabled]=false >
         <label class="labelForm">Nombre Cónyuge</label>
         <input type="text" class="inputStyle">
         <label class="labelForm">Lengua Materna</label>
-        <input type="text" class="inputStyle">
+        <input type="text" class="inputStyle" formControlName="nativeLanguage" [attr.disabled]="isDisabled ? true : null">
       </div>
     </form>
     <form *ngIf="this.cardSelected ==2">
