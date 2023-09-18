@@ -34,7 +34,7 @@
           <option>Item 3</option>
         </select>
         <label class="labelForm">Número</label>
-        <input #dniDenunciante type="number" pattern="\d*" class="inputStyle">
+        <input #dniDenunciante pattern="\d*" class="inputStyle">
         <button type="button" (click)="buscarByID(dniDenunciante.value)">Buscar</button>
       </div>
       <div class="row">
@@ -96,7 +96,7 @@
           <option>Item 3</option>
         </select>
         <label class="labelForm">Número</label>
-        <input #DniDenunciado type="number" pattern="\d*" class="inputStyle">
+        <input #DniDenunciado  pattern="\d*" class="inputStyle">
         <button type="button" (click)="buscarDenunciado(DniDenunciado.value)" >Buscar</button>
       </div>
       <div class="row">
@@ -151,15 +151,13 @@
         <input type="text" class="inputStyle" formControlName="nativeLanguage" [attr.disabled]="isDisabled ? true : null">
       </div>
     </form>
-    <form *ngIf="this.cardSelected ==3">
-
+    <form *ngIf="this.cardSelected ==3"  >
       <h3>Grado Parentesco con el/la denunciado/a - Consanguinidad o Afinidad</h3>
-
       <div class="row">
         <label class="labelForm">Describa el grado de parectesto con respecto al denuncaido/a</label>
       </div>
       <div class="row">
-        <input type="text" class="inputStyle">
+        <input #parentescoInput type="text"  class="inputStyle">
       </div>
       <div class="row-exception">
         <div class="col-12">
@@ -191,15 +189,21 @@
           <p>Debiendo decir la verdad, bajo apercibimiento de ser denunciado/a por el delito de denuncia calumniosa.</p>
         </div>
       </div>
+      <div class="row">
+        <button type="button" (click)="siguienteFormParentesco(parentescoInput.value)" >Siguiente</button>
+      </div>
     </form>
-    <form *ngIf="this.cardSelected ==4">
+    <form *ngIf="this.cardSelected ==4" >
       <h3>Hora (24HRS), día, mes, año y lugar donde ocurrión el hecho que se denuncia</h3>
       <div class="row">
-        <input type="text" class="inputStyle">
+        <input #timeHecho type="text" class="inputStyle"  >
       </div>
       <h3>Descripción del hecho</h3>
       <div class="row">
-        <textarea class="txtAreaStyle" name="" id="" cols="30" rows="10"></textarea> 
+        <textarea #dataHecho class="txtAreaStyle" name="" id="" cols="30" rows="10" ></textarea> 
+      </div>
+      <div class="row">
+        <button type="button" (click)="siguienteSaveHecho(timeHecho.value,dataHecho.value)" >Siguiente</button>
       </div>
     </form>
     <form *ngIf="this.cardSelected ==5">
@@ -221,7 +225,7 @@
       <div class="row">
         <label class="labelForm">Croquis (URL)</label>
         <input type="text" class="inputStyle">
-      </div>
+      </div>      
     </form>
   </div>
   <div class="button-container">

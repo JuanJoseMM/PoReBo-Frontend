@@ -15,6 +15,10 @@ export class AddDenunciaComponent {
   private datoAgencia:any
   private datosDenunciado:any
   private datosLocation:any
+  private parentescoValue:any
+  private timeHecho:any
+  private hechoData:any
+
   public personaForm = new FormGroup({
     firstName : new FormControl(''),
     lastName : new FormControl(''),
@@ -68,6 +72,7 @@ export class AddDenunciaComponent {
   constructor(private data:DataService){}
   nextCard(){
     this.cardSelected=this.cardSelected+1
+
   }
   previousCard(){
     this.cardSelected = this.cardSelected-1
@@ -84,7 +89,7 @@ export class AddDenunciaComponent {
         console.error('Hubo un error al obtener los datos', error);
       }
     );
-    await (await this.data.getAgencyID('de60027d-8edc-472e-bc19-12ea56fb657b')).subscribe(
+    await (await this.data.getAgencyID('b45b9da6-9f35-4d65-be81-b8edd448c4e8')).subscribe(
       respuesta => {
         this.datoAgencia = respuesta;
         console.log(this.datoAgencia)
@@ -101,7 +106,6 @@ export class AddDenunciaComponent {
     const idDenunciado = id.toString();
     await (await this.data.getPersonbyID(idDenunciado)).subscribe(
       respuesta2 => {
-        console.log(respuesta2)
         this.datosDenunciado = respuesta2;
         console.log(this.datosDenunciado)
       },
@@ -160,5 +164,16 @@ export class AddDenunciaComponent {
       dateOfbirth : dataD.identificationDocument.dateOfBirth,
       country: dataD.identificationDocument.location.name
     })
+  }
+  siguienteFormParentesco(p:any){
+    this.parentescoValue=p
+    this.cardSelected=this.cardSelected+1
+    console.log(this.parentescoValue)
+  }
+  siguienteSaveHecho(time:string,datah:string){
+    this.timeHecho = time
+    this.hechoData = datah
+    console.log(this.timeHecho,this.hechoData)
+    this.cardSelected=this.cardSelected+1
   }
 }
