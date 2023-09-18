@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup,Validators  } from '@angular/forms';
 import { DataService } from 'src/app/core/service/data/data.service';
 
 @Component({
@@ -18,6 +18,11 @@ export class AddDenunciaComponent {
   private parentescoValue:any
   private timeHecho:any
   private hechoData:any
+  private isReported:boolean =false
+  private croquisValue :string=""
+  private evidenciaValue :string=""
+  private hechoAdicionalValue:string=""
+
 
   public personaForm = new FormGroup({
     firstName : new FormControl(''),
@@ -68,6 +73,20 @@ export class AddDenunciaComponent {
     dateOfbirth: new FormControl(''),
     timeRegister: new FormControl(''),
     country: new FormControl(''),
+  })
+
+  public parentescoForm = new FormGroup({
+    parentesco : new FormControl('')
+  })
+  public hechoForm= new FormGroup({
+    tiempo:new FormControl(''),
+    hecho: new FormControl('')
+  })
+  public adicionalForm= new FormGroup({
+    reportada: new FormControl(false),
+    evidencias: new FormControl(''),
+    adicional: new FormControl(''),
+    croquis: new FormControl('')
   })
   constructor(private data:DataService){}
   nextCard(){
@@ -168,6 +187,9 @@ export class AddDenunciaComponent {
   siguienteFormParentesco(p:any){
     this.parentescoValue=p
     this.cardSelected=this.cardSelected+1
+    this.parentescoForm.patchValue({
+      parentesco: p
+    })
     console.log(this.parentescoValue)
   }
   siguienteSaveHecho(time:string,datah:string){
@@ -175,5 +197,24 @@ export class AddDenunciaComponent {
     this.hechoData = datah
     console.log(this.timeHecho,this.hechoData)
     this.cardSelected=this.cardSelected+1
+    this.hechoForm.patchValue({
+      hecho:datah,
+      tiempo:time
+    })
+
+  }
+  registrarDenuncia(chk:boolean,evidence:string,adicional:string,crqs:string){
+    this.isReported = chk
+    this.croquisValue = crqs
+    this.evidenciaValue = evidence
+    this.hechoAdicionalValue =adicional
+    console.log(this.isReported,this.croquisValue,this.evidenciaValue,this.hechoAdicionalValue)
+    this.cardSelected=this.cardSelected+1
+    this.adicionalForm.patchValue({
+      adicional:adicional,
+      croquis:crqs,
+      evidencias:evidence,
+      reportada:chk
+    })
   }
 }

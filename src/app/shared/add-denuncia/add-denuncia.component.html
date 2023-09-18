@@ -83,6 +83,10 @@
         <label class="labelForm">Lengua Materna</label>
         <input type="text" class="inputStyle" formControlName="nativeLanguage" [attr.disabled]="isDisabled ? true : null">
       </div>
+      <div class="row">
+        <button class="button-37" (click)="previousCard()">Atras</button>
+        <button class="button-37" (click)="nextCard()">Siguiente</button>
+      </div>
     </form>
     <form *ngIf="this.cardSelected ==2" [formGroup]="denunciadoForm">
 
@@ -150,14 +154,18 @@
         <label class="labelForm">Lengua Materna</label>
         <input type="text" class="inputStyle" formControlName="nativeLanguage" [attr.disabled]="isDisabled ? true : null">
       </div>
+      <div class="row">
+        <button class="button-37" (click)="previousCard()">Atras</button>
+        <button class="button-37" (click)="nextCard()">Siguiente</button>
+      </div>
     </form>
-    <form *ngIf="this.cardSelected ==3"  >
+    <form *ngIf="this.cardSelected ==3" [formGroup]="parentescoForm" >
       <h3>Grado Parentesco con el/la denunciado/a - Consanguinidad o Afinidad</h3>
       <div class="row">
         <label class="labelForm">Describa el grado de parectesto con respecto al denuncaido/a</label>
       </div>
       <div class="row">
-        <input #parentescoInput type="text"  class="inputStyle">
+        <input #parentescoInput type="text"  class="inputStyle" formControlName="parentesco">
       </div>
       <div class="row-exception">
         <div class="col-12">
@@ -190,47 +198,48 @@
         </div>
       </div>
       <div class="row">
-        <button type="button" (click)="siguienteFormParentesco(parentescoInput.value)" >Siguiente</button>
+        <button class="button-37" (click)="previousCard()">Atras</button>
+        <button  class="button-37" type="button" (click)="siguienteFormParentesco(parentescoInput.value)" >Siguiente</button>
       </div>
     </form>
-    <form *ngIf="this.cardSelected ==4" >
+    <form *ngIf="this.cardSelected ==4" [formGroup]="hechoForm">
       <h3>Hora (24HRS), día, mes, año y lugar donde ocurrión el hecho que se denuncia</h3>
       <div class="row">
-        <input #timeHecho type="text" class="inputStyle"  >
+        <input #timeHecho type="text" class="inputStyle" formControlName="tiempo" >
       </div>
       <h3>Descripción del hecho</h3>
       <div class="row">
-        <textarea #dataHecho class="txtAreaStyle" name="" id="" cols="30" rows="10" ></textarea> 
+        <textarea #dataHecho class="txtAreaStyle" name="" id="" cols="30" rows="10" formControlName="hecho"></textarea> 
       </div>
       <div class="row">
-        <button type="button" (click)="siguienteSaveHecho(timeHecho.value,dataHecho.value)" >Siguiente</button>
+        <button class="button-37" (click)="previousCard()">Atras</button>
+        <button class="button-37" type="button" (click)="siguienteSaveHecho(timeHecho.value,dataHecho.value)" >Siguiente</button>
       </div>
     </form>
-    <form *ngIf="this.cardSelected ==5">
+    <form *ngIf="this.cardSelected ==5" [formGroup]="adicionalForm">
       <div class="row">
         <label class="labelForm">La denuncia fue reportada anteriormente : </label>
         <label class="custom-checkbox">
-          <input type="checkbox">
+          <input #isReportada type="checkbox" formControlName="reportada">
           <span class="checkmark"></span>
         </label>
       </div>
       <h3>Evidencias del hecho</h3>
       <div class="row">
-        <textarea class="txtAreaStyle" name="" id="" cols="80" rows="10"></textarea> 
+        <textarea #evidenciasValue class="txtAreaStyle" name="" id="" cols="80" rows="10" formControlName="evidencias"></textarea> 
       </div>
       <h3>Informacion adicional al hecho</h3>
       <div class="row">
-        <textarea class="txtAreaStyle" name="" id="" cols="80" rows="10"></textarea> 
+        <textarea #hechoAdicional class="txtAreaStyle" name="" id="" cols="80" rows="10" formControlName="adicional"></textarea> 
       </div>
       <div class="row">
         <label class="labelForm">Croquis (URL)</label>
-        <input type="text" class="inputStyle">
-      </div>      
+        <input #croquisValue type="text" class="inputStyle" formControlName="croquis">
+      </div>  
+      <div class="row">
+        <button class="button-37" (click)="previousCard()">Atras</button>
+        <button class="button-37" type="button" (click)="registrarDenuncia(isReportada.checked,evidenciasValue.value,hechoAdicional.value,croquisValue.value)" >Registrar Denuncia</button>
+      </div>    
     </form>
-  </div>
-  <div class="button-container">
-    <button class="button-37" (click)="nextCard()">Siguiente</button>
-    <button class="button-37" (click)="previousCard()">Atras</button>
-    <button class="button-37">Editar</button>
   </div>
 </div>
