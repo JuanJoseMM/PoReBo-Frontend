@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup,Validators  } from '@angular/forms';
 import { DataService } from 'src/app/core/service/data/data.service';
+import { DenunciaService } from 'src/app/core/service/denuncia.service';
 
 @Component({
   selector: 'app-add-denuncia',
@@ -74,7 +75,6 @@ export class AddDenunciaComponent {
     timeRegister: new FormControl(''),
     country: new FormControl(''),
   })
-
   public parentescoForm = new FormGroup({
     parentesco : new FormControl('')
   })
@@ -88,7 +88,8 @@ export class AddDenunciaComponent {
     adicional: new FormControl(''),
     croquis: new FormControl('')
   })
-  constructor(private data:DataService){}
+  public registroForm= new FormGroup({})
+  constructor(private data:DataService, private pdfser:DenunciaService){}
   nextCard(){
     this.cardSelected=this.cardSelected+1
 
@@ -216,5 +217,9 @@ export class AddDenunciaComponent {
       evidencias:evidence,
       reportada:chk
     })
+  }
+
+  generarPDF():void{
+    this.pdfser.generarPDF(this.personaForm,this.denunciadoForm,this.parentescoForm,this.hechoForm,this.adicionalForm)
   }
 }

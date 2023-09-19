@@ -241,5 +241,11 @@
         <button class="button-37" type="button" (click)="registrarDenuncia(isReportada.checked,evidenciasValue.value,hechoAdicional.value,croquisValue.value)" >Registrar Denuncia</button>
       </div>    
     </form>
+    <form *ngIf="this.cardSelected ==6" [formGroup]="registroForm">
+      <div class="row">
+        <button class="button-37" (click)="previousCard()">Atras</button>
+        <button class="button-37" type="button" (click)="generarPDF()" >Registrar PDF</button>
+      </div>
+    </form>
   </div>
 </div>
