@@ -43,11 +43,43 @@ export class DataService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
     });
-    return await this.http.get<any>(this.url + '/agency/' + id, {
+    return await this.http.get<any>(this.url + '/agent/' + id, {
       responseType: 'json',
       headers,
     })
   }
+
+  public async sendDenuncia(data:any) {
+    console.log("Registrando Denuncia")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+    });
+    const query={
+      complainantId: "95b31016-7848-49a3-982e-0a496d9ab1ee",
+      denouncedId: "4258d08f-cf38-495c-a71d-9eb7539ddc37",
+      relationshipDegree: "Friend",
+      timeOfIncident: "15:30:00",
+      dateOfIncident: "2023-09-18",
+      locationDescription: "Central Park, New York",
+      croquisUrl: "https://example.com/croquis.png",
+      descriptionOfIncident: "A verbal altercation occurred.",
+      reportedToOtherAuthority: true,
+      evidenceProvided: "Photos, videos",
+      additionalInformation: "Additional details here",
+      receivingAgentId: "4ccd307b-e0c2-4235-b643-497e82e0a16a",
+      urgentInstructions: "Handle with care"
+    }
+    console.log(typeof(query))
+    var rst= await this.http.post<any>(this.url + '/verbal-reports/create',query, {
+      responseType: 'json',
+      headers,
+    }).subscribe(
+      response=>{
+        console.log(response)
+      }
+    )
+    console.log(rst)
+    }   
 }
 
 

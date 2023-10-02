@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import jsPDF from 'jspdf';
 import { StateService } from './state.service';
+import { DataService } from './data/data.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -94,13 +95,14 @@ export class DenunciaService {
   }
 
 
-  constructor(private state: StateService) { }
+  constructor(private state: StateService, private data: DataService) { }
   generarPDF(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup) {
     var linea = 10;
     const doc = new jsPDF();
 
     // Obtén la información de los formularios
     const dataDenunciante = fgDenunciante.value;
+    console.log(dataDenunciante)
     const dataDenunciado = fgDenunciado.value;
     const dataParentesco = fgParentesco.value;
     const dataHecho = fgHecho.value;
@@ -155,5 +157,27 @@ export class DenunciaService {
     }
     // Guarda el PDF
     doc.save('formulario.pdf');
+
+    // Registrar en la Base de Datos
+    this.registrarDB(fgDenunciante, fgDenunciado, fgParentesco, fgHecho, fgAdicional)
+  }
+  
+  registrarDB(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup){
+    var data={
+      "complainantId": "12345678-1234-5678-1234-567812345678",
+      "denouncedId": "87654321-4321-8765-4321-876543218765",
+      "relationshipDegree": "Friend",
+      "timeOfIncident": "15:30:00",
+      "dateOfIncident": "2023-09-18",
+      "locationDescription": "Central Park, New York",
+      "croquisUrl": "https://example.com/croquis.png",
+      "descriptionOfIncident": "A verbal altercation occurred.",
+      "reportedToOtherAuthority": true,
+      "evidenceProvided": "Photos, videos",
+      "additionalInformation": "Additional details here",
+      "receivingAgentId": "87654321-4321-8765-4321-876543218765",
+      "urgentInstructions": "Handle with care"
+    }
+    this.data.sendDenuncia(data)
   }
 }
