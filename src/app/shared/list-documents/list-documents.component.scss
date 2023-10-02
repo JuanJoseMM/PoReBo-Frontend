@@ -1,0 +1,56 @@
+.document-card {
+    width: 70vw;
+    height: 80vh;
+    display: flex;
+    background-color: #273C54;
+    padding: 15px;
+    border-radius: 15px;
+    .main-panel {
+        width: 50%;
+        height: 94%;
+        overflow-y: auto;
+        background-color: #C9DBFD;
+        margin: 10px 10px 10px 10px;
+        border-radius: 15px;
+        padding: 15px;
+        font-family: "Roboto", sans-serif;
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+            font-family: "Roboto", sans-serif;
+
+            .date,
+            .code {
+                margin: 0 1rem;
+            }
+        }
+    }
+
+    .side-panels {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+
+        .top-panel {
+            height: 20%;
+            background-color:#C9DBFD; // solo para visualizarlo
+            margin-bottom: 10px;
+            border-radius: 15px;
+            padding: 15px;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .bottom-panel {
+            flex-grow: 1;
+            background-color: #C9DBFD; // solo para visualizarlo
+            margin-top: 10px;
+            border-radius: 15px;
+            padding: 15px;
+            font-family: "Roboto", sans-serif;
+
+        }
+    }
+}

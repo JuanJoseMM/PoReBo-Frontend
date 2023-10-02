@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
 
+  public selectedHome=0
   constructor() { }
 }

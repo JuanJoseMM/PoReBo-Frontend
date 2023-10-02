@@ -1,6 +1,11 @@
 <div class="contentmain">
 <div class="container">
+  <div *ngIf="this.state.selectedHome==0">
+    <app-list-documents></app-list-documents>
+  </div>
+  <div *ngIf="this.state.selectedHome==1">
   <app-add-denuncia></app-add-denuncia>
+</div>
 </div>
 <app-lateral-bar></app-lateral-bar>
 </div>
