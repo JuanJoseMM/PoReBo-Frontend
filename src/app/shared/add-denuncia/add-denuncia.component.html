@@ -29,9 +29,8 @@
       <div class="row">
         <label class="labelForm">Tipo de Documento</label>
         <select>
-          <option>Item 1</option>
-          <option>Item 2</option>
-          <option>Item 3</option>
+          <option>DNI</option>
+          <option>Carnet Extranjería</option>          
         </select>
         <label class="labelForm">Número</label>
         <input #dniDenunciante pattern="\d*" class="inputStyle">
@@ -77,9 +76,7 @@
 
       <div class="row">
         <label class="labelForm">Estado Civil</label>
-        <input type="text" class="inputStyle" formControlName="maritalStatus" [disabled]=false >
-        <label class="labelForm">Nombre Cónyuge</label>
-        <input type="text" class="inputStyle">
+        <input type="text" class="inputStyle" formControlName="maritalStatus" [disabled]=false >        
         <label class="labelForm">Lengua Materna</label>
         <input type="text" class="inputStyle" formControlName="nativeLanguage" [attr.disabled]="isDisabled ? true : null">
       </div>

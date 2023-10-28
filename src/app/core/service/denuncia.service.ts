@@ -102,6 +102,9 @@ export class DenunciaService {
 
     // Obtén la información de los formularios
     const dataDenunciante = fgDenunciante.value;
+    const ahora = new Date();
+    const fecha = ahora.toLocaleDateString();
+    const nameFile = dataDenunciante["firstName"]+'_'+dataDenunciante["lastName"]+'_'+fecha
     console.log(dataDenunciante)
     const dataDenunciado = fgDenunciado.value;
     const dataParentesco = fgParentesco.value;
@@ -153,29 +156,36 @@ export class DenunciaService {
       var texto = `${key}: ${dataAdicional[key]}`;
       const splitText = doc.splitTextToSize(texto, maxWidth); // Divide el texto
       doc.text(splitText, 10, y); // Este método puede manejar array de strings (splitText)
-      y += 10;
+      y += 15;
     }
     // Guarda el PDF
-    doc.save('formulario.pdf');
+    var nombre = 
+    doc.save(nameFile+'.pdf');
+
 
     // Registrar en la Base de Datos
     this.registrarDB(fgDenunciante, fgDenunciado, fgParentesco, fgHecho, fgAdicional)
   }
   
   registrarDB(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup){
+    const dataDenunciante = fgDenunciante.value;            
+    const dataDenunciado = fgDenunciado.value;
+    const dataParentesco = fgParentesco.value;
+    const dataHecho = fgHecho.value;
+    const dataAdicional = fgAdicional.value;
     var data={
-      "complainantId": "12345678-1234-5678-1234-567812345678",
-      "denouncedId": "87654321-4321-8765-4321-876543218765",
-      "relationshipDegree": "Friend",
-      "timeOfIncident": "15:30:00",
-      "dateOfIncident": "2023-09-18",
-      "locationDescription": "Central Park, New York",
-      "croquisUrl": "https://example.com/croquis.png",
-      "descriptionOfIncident": "A verbal altercation occurred.",
+      "complainantId": dataDenunciado["denunciadoID"],
+      "denouncedId": dataDenunciante["denuncianteID"],
+      "relationshipDegree":dataParentesco["parentesco"],
+      "timeOfIncident": dataHecho["tiempo"],
+      "dateOfIncident": dataHecho["tiempo"],
+      "locationDescription": dataAdicional["croquis"],
+      "croquisUrl": dataAdicional["croquis"],
+      "descriptionOfIncident": dataHecho["hecho"],
       "reportedToOtherAuthority": true,
-      "evidenceProvided": "Photos, videos",
-      "additionalInformation": "Additional details here",
-      "receivingAgentId": "87654321-4321-8765-4321-876543218765",
+      "evidenceProvided": "fotos, videos",
+      "additionalInformation": dataAdicional["adicional"],
+      "receivingAgentId": this.state.agente["id"],
       "urgentInstructions": "Handle with care"
     }
     this.data.sendDenuncia(data)

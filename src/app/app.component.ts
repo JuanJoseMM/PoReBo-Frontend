@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'porebo-frontend';
+  constructor(private router: Router){ }
+  ngOnInit() {
+    // Al iniciar el componente, redirige al login.
+    this.router.navigate(['/login']);
+  }
 }

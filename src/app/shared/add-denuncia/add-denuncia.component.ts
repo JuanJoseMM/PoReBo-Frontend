@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup,Validators  } from '@angular/forms';
 import { DataService } from 'src/app/core/service/data/data.service';
 import { DenunciaService } from 'src/app/core/service/denuncia.service';
+import { StateService } from 'src/app/core/service/state.service';
+
 
 @Component({
   selector: 'app-add-denuncia',
@@ -26,7 +28,7 @@ export class AddDenunciaComponent {
 
 
   public personaForm = new FormGroup({
-    denuncainteID: new FormControl(''),
+    denuncianteID: new FormControl(''),
     firstName : new FormControl(''),
     lastName : new FormControl(''),
     email : new FormControl(''),
@@ -93,7 +95,7 @@ export class AddDenunciaComponent {
     croquis: new FormControl('')
   })
   public registroForm= new FormGroup({})
-  constructor(private data:DataService, private pdfser:DenunciaService){}
+  constructor(private data:DataService, private pdfser:DenunciaService, private state:StateService){}
   nextCard(){
     this.cardSelected=this.cardSelected+1
 
@@ -107,16 +109,16 @@ export class AddDenunciaComponent {
     await (await this.data.getPersonbyID(idSearch)).subscribe(
       respuesta => {
         this.datosPersona = respuesta;
-        console.log(this.datosPersona)
+        console.log("persona",this.datosPersona)
       },
       error => {
         console.error('Hubo un error al obtener los datos', error);
       }
     );
-    await (await this.data.getAgencyID('4ccd307b-e0c2-4235-b643-497e82e0a16a')).subscribe(
+    await (await this.data.getAgencyID(this.state.agencia["id"])).subscribe(
       respuesta => {
         this.datoAgencia = respuesta;
-        console.log(this.datoAgencia)
+        console.log("agencia",this.datoAgencia)
       },
       error => {
         console.error('Hubo un error al obtener los datos', error);
@@ -144,7 +146,7 @@ export class AddDenunciaComponent {
   cargarDatosPersona(dataP:any,dataA:any){
     var hora = this.data.getTimeNow()
     this.personaForm.patchValue({
-      denuncainteID:dataP.id,
+      denuncianteID:dataP.id,
       firstName : dataP.firstName,
       lastName : dataP.lastName,
       email : dataP.email,
@@ -163,11 +165,11 @@ export class AddDenunciaComponent {
       dateOfbirth : dataP.identificationDocument.dateOfBirth,
       timeRegister : hora,
       country: dataP.identificationDocument.location.name,
-      dependencianame : dataA.agency.name,
-      dependenciadepartamento : dataA.agency.location.parent.parent.name,
-      dependenciaprovincia: dataA.agency.location.parent.name,
-      dependenciadistrito: dataA.agency.location.name,
-      policiaCargo: dataA.person.firstName + ' '+ dataA.person.lastName
+      dependencianame : dataA.name,
+      dependenciadepartamento : dataA.location.parent.parent.name,
+      dependenciaprovincia: dataA.location.parent.name,
+      dependenciadistrito: dataA.location.name,
+      policiaCargo: this.state.agente["person"]["firstName"] + ' '+ this.state.agente["person"]["lastName"]
     })
   }
   cargarDatosDenunciado(dataD:any){

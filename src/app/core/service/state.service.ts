@@ -6,5 +6,12 @@ import { Injectable } from '@angular/core';
 export class StateService {
 
   public selectedHome=0
+  public usuario:any
+  public agente:any
+  public isLogin= false
+  public agencia:any
+  
+
+
   constructor() { }
 }

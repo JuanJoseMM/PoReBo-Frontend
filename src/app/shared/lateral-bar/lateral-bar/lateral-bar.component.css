@@ -3,7 +3,7 @@
     /* Hacemos que sea fijo para que cubra todo el alto y siempre esté visible */
     top: 0;
     left: 0;
-    width: 15%;
+    width: 10%;
     height: 100vh;
     /* Esto hace que tenga el alto de la ventana del viewport */
     background-color: #04286C;

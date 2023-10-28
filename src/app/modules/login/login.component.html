@@ -4,9 +4,9 @@
         <div class="card">
             <h2 class="titleOne">PoReBo</h2>
             <div class="line"></div>  <!-- Esta es la línea -->
-            <input type="text" placeholder="Código CIP" class="inputLogin">
-            <input type="text" placeholder="Contraseña" class="inputLogin" type="password">
-            <button class="btnLogin" (click)="entrar()">Iniciar Sesión</button>
+            <input #user type="text" placeholder="Correo Organizacional" class="inputLogin">
+            <input #pw type="text" placeholder="Contraseña" class="inputLogin" type="password">
+            <button class="btnLogin" (click)="entrar(user.value,pw.value)">Iniciar Sesión</button>
             <p class="lblLogin">Olvidó su contraseña, contacte con <strong>administración</strong></p> 
        </div>
        <div class="adaptive-image-two"></div> 

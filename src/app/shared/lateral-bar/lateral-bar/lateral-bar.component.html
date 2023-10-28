@@ -1,10 +1,10 @@
 <div class="lateral-bar" [class.collapsed]="isCollapsed">
     <!--<button class="close-button" (click)="toggleCollapse()">Cerrar</button>-->
-    <img   class="close-button" (click)="toggleCollapse()">
-    <p class="lateralbar-title">PoReBo</p>
-    <button class="btnMenu">Registrar Acta</button>
-    <button class="btnMenu">Buscar Acta</button>
-    <div class="bottom-button-container">
-        <button>Botón inferior</button>
+    <img  class="close-button" (click)="toggleCollapse()">
+    <p *ngIf="!this.isCollapsed" class="lateralbar-title">PoReBo</p>
+    <button *ngIf="!this.isCollapsed" class="btnMenu" (click)="irRegistrarActa()">Registrar Acta</button>
+    <button *ngIf="!this.isCollapsed" class="btnMenu" (click)="irBuscarActa()">Buscar Acta</button>
+    <div *ngIf="!this.isCollapsed" class="bottom-button-container">
+        <button class="btnMenu">Cerrar Sesión</button>
     </div>
 </div>
