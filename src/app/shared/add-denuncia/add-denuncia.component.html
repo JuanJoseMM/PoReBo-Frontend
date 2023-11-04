@@ -2,6 +2,7 @@
 <div class="container">
 
   <div class="card">
+    <button (click)="generarbuffer()"></button>
     <form *ngIf="this.cardSelected ==1" [formGroup]="personaForm">
       <h3>Recepción de Denuncia Verbal</h3>
       <div class="row">

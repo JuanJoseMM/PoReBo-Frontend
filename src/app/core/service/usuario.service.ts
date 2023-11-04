@@ -28,6 +28,7 @@ export class UsuarioService {
       
       console.log("agente login",this.state.agente)
       this.state.agencia = this.state.agente["agency"]
+      this.state.firma= this.state.agencia["person"]["signature"]["signature"]["data"]
     } catch (error) {
       console.log(error)
       

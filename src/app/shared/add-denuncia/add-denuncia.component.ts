@@ -228,6 +228,9 @@ export class AddDenunciaComponent {
     })
   }
 
+  generarbuffer(){
+    this.pdfser.bufferToPdf()
+  }
   generarPDF():void{
     this.pdfser.generarPDF(this.personaForm,this.denunciadoForm,this.parentescoForm,this.hechoForm,this.adicionalForm)
   }

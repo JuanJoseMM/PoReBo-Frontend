@@ -22,7 +22,7 @@ import { AddDenunciaComponent } from './shared/add-denuncia/add-denuncia.compone
     ListDocumentsComponent,
     AddDocumentsComponent,
     RegisterDocComponent,
-    AddDenunciaComponent
+    AddDenunciaComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ export class StateService {
   public agente:any
   public isLogin= false
   public agencia:any
+  public firma:any
   
 
 
