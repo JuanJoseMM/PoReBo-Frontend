@@ -9,9 +9,9 @@ import { StateService } from 'src/app/core/service/state.service';
 export class ListDocumentsComponent implements OnInit {
 
   public documents: any[] = [
-    { date: '2023-01-01', code: 'ABC123' },
-    { date: '2023-01-02', code: 'DEF456' },
-    // ... más datos
+    { date: '12-11-2023', code: 'ABC123', nombre:"E. Vences" },
+    { date: '13-11-2023', code: 'DEF456', nombre:"E. Vences" },
+    
   ];
   
   constructor(private state: StateService){}

@@ -11,6 +11,7 @@ export class StateService {
   public isLogin= false
   public agencia:any
   public firma:any
+  public idReporte:any
   
 
 

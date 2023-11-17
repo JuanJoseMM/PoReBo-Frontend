@@ -4,6 +4,7 @@ import jsPDF from 'jspdf';
 import { StateService } from './state.service';
 import { DataService } from './data/data.service';
 import { FirmadigitalService } from './firmadigital.service';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -96,9 +97,10 @@ export class DenunciaService {
     this._instruccionesDenuncia = value;
   }
 
+  private url = "http://localhost:3333/api/v1"
 
-  constructor(private state: StateService, private data: DataService, private firmadigital : FirmadigitalService) { }
-  generarPDF(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup) {
+  constructor(private http: HttpClient,private state: StateService, private data: DataService, private firmadigital : FirmadigitalService) { }
+  async generarPDF(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup) {
     var linea = 10;
     const doc = new jsPDF();
 
@@ -178,14 +180,20 @@ export class DenunciaService {
       y += 15;
     }
     // Guarda el PDF
+    const pdfBlob = doc.output('blob'); // Genera un Blob del PDF
     doc.save(nameFile+'.pdf');
 
 
     // Registrar en la Base de Datos
-    this.registrarDB(fgDenunciante, fgDenunciado, fgParentesco, fgHecho, fgAdicional)
+    await this.registrarDB(fgDenunciante, fgDenunciado, fgParentesco, fgHecho, fgAdicional)
+    setTimeout(() => {
+      this.data.enviarPDF(pdfBlob,this.state.idReporte)  
+    }, 1500);
+    
   }
   
-  registrarDB(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup){
+  async registrarDB(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup){
+    console.log("Registrar DB y Enviar Denuncia")
     const dataDenunciante = fgDenunciante.value;            
     const dataDenunciado = fgDenunciado.value;
     const dataParentesco = fgParentesco.value;
@@ -206,7 +214,7 @@ export class DenunciaService {
       "receivingAgentId": this.state.agente["id"],
       "urgentInstructions": "Handle with care"
     }
-    this.data.sendDenuncia(data)
+    await this.data.sendDenuncia(data)
   }
   bufferToPdf() {
     console.log("Entrando al buffertoPDF")

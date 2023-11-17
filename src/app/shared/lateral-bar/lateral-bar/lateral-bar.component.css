@@ -1,11 +1,9 @@
 .lateral-bar {
     position: fixed;
-    /* Hacemos que sea fijo para que cubra todo el alto y siempre esté visible */
     top: 0;
     left: 0;
-    width: 10%;
+    width: 15%;
     height: 100vh;
-    /* Esto hace que tenga el alto de la ventana del viewport */
     background-color: #04286C;
     border-left: 1px solid black;
     display: flex;
@@ -13,13 +11,11 @@
     align-items: center;
     padding: 20px;
     z-index: 1000;
-    /* Un valor alto para asegurarse de que esté encima de otros contenidos */
     transition: transform 0.3s ease;
     box-shadow: 0px 0px 18px 5px black;}
 
 .lateral-bar.collapsed {
-    transform: translateX(-150px);
-    /* Desplazamos el lateral-bar 400px hacia la derecha (que es su ancho), para sacarlo de la vista */
+    transform: translateX(-80%);
 }
 
 .close-button {

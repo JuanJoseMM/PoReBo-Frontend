@@ -3,15 +3,16 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable } from 'rxjs';
 import { format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
+import { StateService } from '../state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   private url = "http://localhost:3333/api/v1"
-  public hora:any
-  public fecha:any
-  constructor(private http: HttpClient) { }
+  public hora: any
+  public fecha: any
+  constructor(private http: HttpClient, private state: StateService) { }
   public async getPersonbyID(id: string): Promise<Observable<any>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
@@ -71,38 +72,64 @@ export class DataService {
     return n < 10 ? '0' + n : n.toString();
   }
 
-  public async sendDenuncia(data:any) {
+  public async sendDenuncia(data: any) {
     console.log("Registrando Denuncia")
     this.obtenerFechaHora()
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
     });
-    const query={
+    const query = {
       complainantId: data["complainantId"],
       denouncedId: data["denouncedId"],
       relationshipDegree: data["relationshipDegree"],
       timeOfIncident: this.hora,
       dateOfIncident: this.fecha,
-      locationDescription:data["locationDescription"],
-      croquisUrl:data["croquisUrl"],
-      descriptionOfIncident:data["descriptionOfIncident"],
+      locationDescription: data["locationDescription"],
+      croquisUrl: data["croquisUrl"],
+      descriptionOfIncident: data["descriptionOfIncident"],
       reportedToOtherAuthority: true,
-      evidenceProvided:data["evidenceProvided"],
-      additionalInformation:data["additionalInformation"],
-      receivingAgentId:data["receivingAgentId"],
-      urgentInstructions:data["urgentInstructions"],
+      evidenceProvided: data["evidenceProvided"],
+      additionalInformation: data["additionalInformation"],
+      receivingAgentId: data["receivingAgentId"],
+      urgentInstructions: data["urgentInstructions"],
     }
-    console.log(typeof(query))
-    var rst= await this.http.post<any>(this.url + '/verbal-reports/create',query, {
+    console.log(typeof (query))
+    var rst = await this.http.post<any>(this.url + '/verbal-reports/create', query, {
       responseType: 'json',
       headers,
     }).subscribe(
-      response=>{
+      response => {
         console.log(response)
+        this.state.idReporte = response["id"]
       }
     )
     console.log(rst)
-    }   
+  }
+   leerArchivoComoBinario(archivo: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const resultado = reader.result as string;
+        const binario = resultado.split(',')[1]; // Elimina el prefijo de Data URL
+        resolve(binario);
+      };
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(archivo);
+    });
+  }
+  async enviarPDF(archivo: any,id:any) {
+    try {
+      const binario = await this.leerArchivoComoBinario(archivo);
+      const formData = new FormData();
+      formData.append('file', new Blob([binario], { type: 'application/pdf' }), archivo.name);
+
+      var rst =  this.http.post(this.url + '/verbal-reports/'+id+'/upload-pdf', formData).toPromise();
+      console.log(rst)
+      return;
+    } catch (error) {
+      console.error('Error al leer el archivo:', error);
+    }
+  }
 }
 
 

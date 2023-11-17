@@ -36,16 +36,20 @@
 
         .top-panel {
             height: 20%;
-            background-color:#C9DBFD; // solo para visualizarlo
+            background-color: #C9DBFD;
             margin-bottom: 10px;
             border-radius: 15px;
             padding: 15px;
             font-family: "Roboto", sans-serif;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            font-size: 1.2em;
         }
 
         .bottom-panel {
             flex-grow: 1;
-            background-color: #C9DBFD; // solo para visualizarlo
+            background-color: #C9DBFD;
             margin-top: 10px;
             border-radius: 15px;
             padding: 15px;

@@ -2,7 +2,6 @@
 <div class="container">
 
   <div class="card">
-    <button (click)="generarbuffer()"></button>
     <form *ngIf="this.cardSelected ==1" [formGroup]="personaForm">
       <h3>Recepción de Denuncia Verbal</h3>
       <div class="row">
@@ -93,9 +92,9 @@
       <div class="row">
         <label class="labelForm">Tipo de Documento</label>
         <select>
-          <option>Item 1</option>
-          <option>Item 2</option>
-          <option>Item 3</option>
+          <option>DNI</option>
+          <option>Carnet de Extranjería</option>
+          
         </select>
         <label class="labelForm">Número</label>
         <input #DniDenunciado  pattern="\d*" class="inputStyle">
