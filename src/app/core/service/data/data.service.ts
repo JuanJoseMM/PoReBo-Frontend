@@ -9,7 +9,7 @@ import { StateService } from '../state.service';
   providedIn: 'root'
 })
 export class DataService {
-  private url = "http://localhost:3333/api/v1"
+  private url = "http://porebo-backend-env.eba-be44jehw.us-east-1.elasticbeanstalk.com/api/v1"
   public hora: any
   public fecha: any
   constructor(private http: HttpClient, private state: StateService) { }
