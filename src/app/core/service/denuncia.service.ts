@@ -97,7 +97,7 @@ export class DenunciaService {
     this._instruccionesDenuncia = value;
   }
 
-  private url = "http://porebo-api-blockchain-env.eba-nn3kgbjc.us-east-1.elasticbeanstalk.com/api/v1"
+  private url = "http://ec2-54-157-168-45.compute-1.amazonaws.com/api/v1"
 
   constructor(private http: HttpClient,private state: StateService, private data: DataService, private firmadigital : FirmadigitalService) { }
   async generarPDF(fgDenunciante: FormGroup, fgDenunciado: FormGroup, fgParentesco: FormGroup, fgHecho: FormGroup, fgAdicional: FormGroup) {
